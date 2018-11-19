@@ -1,6 +1,8 @@
 static class Consts {
   public static int time = 0;
   public static int totalTime = 0;
+  public static int width = 0;
+  public static int height = 0;
   
   public static PVector getBatmanTime() {
     time = 0;
@@ -21,5 +23,27 @@ static class Consts {
   
   public static PVector drawCircle() {
     return new PVector(cos(time) * 200, sin(time) * 200);
+  }
+  
+ public static PVector getSquareTime() {
+    time = 0;
+    totalTime = 400;
+    return new PVector(0,400);
+  }
+  
+  public static PVector drawSquare() {
+    if (0 <= time && time <= 100) {
+      return new PVector(time + width/2 - 50,0);
+    }
+    else if (100 < time && time <=200){
+      return new PVector(width/2 + 50, time + width/2 - 50);
+    }
+    else if (200 <= time && time <= 300) {
+      return new PVector(time - width/2 + 50,0);
+    }
+    else {
+      return new PVector(width/2 - 50, time - width/2 + 50);
+    }
+    
   }
 }
