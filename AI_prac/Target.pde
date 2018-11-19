@@ -1,6 +1,14 @@
 class Target {
   PVector location;
   int size;
+  int startTime;
+  int endTime;
+  
+  public void startTarget() {
+    PVector mytime = Consts.getBatmanTime();
+    startTime = (int) mytime.x;
+    endTime = (int) mytime.y;
+  }
   
   Target(PVector loc, int s) {
     location = loc;

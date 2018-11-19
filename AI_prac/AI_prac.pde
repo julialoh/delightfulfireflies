@@ -19,6 +19,7 @@ void setup() {
   obstacles.add(new Obstacle(new PVector(width/2+80, 50), 20, 200));
 
   target = new Target(new PVector(width/2, 100), 60);
+  target.startTarget();
 
   float mutationRate = 0.02;
   population = new Population(mutationRate, 200);
