@@ -4,19 +4,14 @@ class Target {
   int startTime;
   int endTime;
   
-  public void startTarget() {
-    PVector mytime = Consts.getBatmanTime();
+  Target() {
+    PVector mytime = Consts.getCircleTime();
     startTime = (int) mytime.x;
     endTime = (int) mytime.y;
   }
   
-  Target(PVector loc, int s) {
-    location = loc;
-    size = s;
-  }
-  
   boolean contains(PVector v) {
-    if (PVector.dist(v, location) < size/2) {
+    if (PVector.dist(v, location) < size/10) {
       return true;
     } else{
       return false; 
@@ -24,8 +19,8 @@ class Target {
   }
   
   void render() {
-    fill(255);
+    fill(255, 255,0);
     stroke(0);
-    ellipse(location.x, location.y, size, size);
+    ellipse(Consts.getCircleTime().x, Consts.getCircleTime().y, size, size);
   }
 }
