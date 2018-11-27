@@ -6,7 +6,8 @@ void setup() {
   Consts.getTime(Consts.shape);
   Consts.width = width;
   Consts.height = height;
-  float mutationRate = 0.02;
+  frameRate(360);
+  float mutationRate = 0.002;
   population = new Population(mutationRate, 200);
   background(255);
 }
