@@ -13,7 +13,7 @@ void setup() {
 }
 
 void draw() {
-  print(Consts.drawShape(Consts.shape).x+ " ");
+  //print(Consts.drawShape(Consts.shape).x+ " ");
   if (Consts.time < Consts.totalTime) {
     population.live();
     Consts.time++;
