@@ -12,6 +12,7 @@ class Rocket {
   float recordDist = height;
   float recordTime; 
   float finDist; 
+  float nfitness; 
   
   Rocket() {
     location = new PVector(width/2, height); 
@@ -42,43 +43,47 @@ class Rocket {
   }
   
   void calcFitness() {
-    //float d = PVector.dist(location,target);
-    //fitness = pow(1/d,2);
-    //System.out.println(recordDist);
-    finDist = PVector.dist(location, target.location);
-    fitness = pow(1/((finishTime+recordTime*0.05)*(recordDist+finDist*0.15)), 2);
-    //System.out.print(Math.log10(fitness) + " ");
-    if (stopped) fitness *= 0.1;
-    if (hitTarget) fitness += 2;
-    //System.out.println(Math.log10(fitness));
+    finDist = PVector.dist(location, Consts.drawShape(1)) + 0.0001;
+    nfitness = pow(1/(finDist), 2);
+    fitness += nfitness;
+    //if (stopped) fitness *= 0.1;
+    //if (hitTarget) fitness += 2;
   }
   
     void render() {
-    fill(200);
-    PVector dir;
-    PVector perp;
-    if (velocity.mag() != 0) {
-      dir = velocity.copy().normalize();
-    } else {
-      dir = new PVector(0, 1);
-    }
-    perp = dir.copy().rotate(HALF_PI);
-    perp.mult(10);
-    dir.mult(30);
+    //fill(200);
+    //PVector dir;
+    //PVector perp;
+    //if (velocity.mag() != 0) {
+    //  dir = velocity.copy().normalize();
+    //} else {
+    //  dir = new PVector(0, 1);
+    //}
+    //perp = dir.copy().rotate(HALF_PI);
+    //perp.mult(10);
+    //dir.mult(30);
     
-    triangle(location.x-dir.x+perp.x, location.y-dir.y+perp.y, location.x, location.y, location.x-dir.x-perp.x, location.y-dir.y-perp.y);
+    //triangle(location.x-dir.x+perp.x, location.y-dir.y+perp.y, location.x, location.y, location.x-dir.x-perp.x, location.y-dir.y-perp.y);
+    stroke(153); 
+    float x = location.x;
+    float y = location.y; 
+    point(x,y); 
   }
   
   void run() {
-    if (!hitTarget && !stopped) {
-      applyForce(dna.genes[genecount]);
-      genecount++;
-      update();
-    }
-    if (!hitTarget) finishTime++;
-    if (target.contains(location)) {
-      hitTarget = true; 
-    }
+    applyForce(dna.genes[genecount]);
+    genecount++;
+    update();
+    calcFitness(); 
+    //if (!hitTarget && !stopped) {
+    //  applyForce(dna.genes[genecount]);
+    //  genecount++;
+    //  update();
+    //}
+    //if (!hitTarget) finishTime++;
+    //if (target.contains(location)) {
+    //  hitTarget = true; 
+    //}
     }
     
     void obstacles() {
