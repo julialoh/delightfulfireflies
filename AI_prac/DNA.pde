@@ -5,7 +5,7 @@ class DNA {
   float maxForce = 1;
   
   DNA() {
-    genes = new PVector[lifetime];
+    genes = new PVector[Consts.totalTime];
     for (int i = 0; i < genes.length; i ++) {
       genes[i] = new PVector(noise(xoff)-0.5, noise(yoff)-0.5);
       genes[i].mult(random(0, maxForce));

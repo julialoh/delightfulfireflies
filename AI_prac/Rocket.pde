@@ -46,8 +46,6 @@ class Rocket {
     finDist = PVector.dist(location, Consts.drawShape(1)) + 0.0001;
     nfitness = pow(1/(finDist), 2);
     fitness += nfitness;
-    //if (stopped) fitness *= 0.1;
-    //if (hitTarget) fitness += 2;
   }
   
     void render() {
@@ -74,31 +72,6 @@ class Rocket {
     applyForce(dna.genes[genecount]);
     genecount++;
     update();
-    calcFitness(); 
-    //if (!hitTarget && !stopped) {
-    //  applyForce(dna.genes[genecount]);
-    //  genecount++;
-    //  update();
-    //}
-    //if (!hitTarget) finishTime++;
-    //if (target.contains(location)) {
-    //  hitTarget = true; 
-    //}
-    }
-    
-    void obstacles() {
-    for (Obstacle obs : obstacles) {
-      if (obs.contains(location)) {
-        stopped = true;
-      }
-    }
+    calcFitness();
   }
-  
-    void checkTarget() {
-    float d = dist(location.x, location.y, target.location.x, target.location.y);
-    if (d < recordDist) {
-      recordDist = d;
-      recordTime = finishTime;
-    }
-  }
-  }
+}
