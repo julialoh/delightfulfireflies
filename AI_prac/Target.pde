@@ -5,7 +5,7 @@ class Target {
   int endTime;
   
   Target() {
-    PVector mytime = Consts.getCircleTime();
+    PVector mytime = Consts.getTime(1);
     startTime = (int) mytime.x;
     endTime = (int) mytime.y;
     Consts.height = height;

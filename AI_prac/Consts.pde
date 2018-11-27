@@ -25,7 +25,7 @@ static class Consts {
     return new PVector(cos(time) * 200, sin(time) * 200);
   }
   
- public static PVector getSquareTime() {
+  public static PVector getSquareTime() {
     time = 0;
     totalTime = 400;
     return new PVector(0,400);
@@ -45,5 +45,27 @@ static class Consts {
       return new PVector(width/2 - 50, time - width/2 + 50);
     }
     
+  }
+  
+  interface DrawAction {
+    PVector getTime();
+    PVector drawShape();
+  }
+  
+  private static DrawAction[] drawActions = new DrawAction[] {
+    new DrawAction() { public PVector getTime() {return getBatmanTime(); } 
+      public PVector drawShape() {return drawBatman(); } },
+    new DrawAction() { public PVector getTime() {return getCircleTime(); } 
+      public PVector drawShape() {return drawCircle(); } },
+    new DrawAction() { public PVector getTime() {return getSquareTime(); } 
+      public PVector drawShape() {return drawSquare(); } },
+  };
+  
+  public static PVector getTime(int index) {
+    return drawActions[index].getTime();
+  }
+  
+  public static PVector drawShape(int index) {
+    return drawActions[index].drawShape();
   }
 }
