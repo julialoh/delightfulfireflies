@@ -4,9 +4,11 @@ ArrayList<Obstacle> obstacles;
 void setup() {
   size(640, 480);
   Consts.getTime(Consts.shape);
-
+  Consts.width = width;
+  Consts.height = height;
   float mutationRate = 0.02;
   population = new Population(mutationRate, 200);
+  background(255);
 }
 
 void draw() {

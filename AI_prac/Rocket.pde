@@ -15,10 +15,11 @@ class Rocket {
   float nfitness; 
   
   Rocket() {
-    location = new PVector(width/2, height); 
+    location = Consts.drawShape(Consts.shape); 
     velocity = new PVector(0,0);
     acceleration = new PVector(0,0); 
     dna = new DNA();
+    fitness = 0;
   }
   
   void applyForce(PVector force) {

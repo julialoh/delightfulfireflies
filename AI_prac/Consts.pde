@@ -23,7 +23,7 @@ static class Consts {
   }
   
   public static PVector drawCircle() {
-    return new PVector(cos(time) * 200, sin(time) * 200);
+    return new PVector(cos(time) * 200+width/2, sin(time) * 200+height/2);
   }
   
   public static PVector getSquareTime() {
