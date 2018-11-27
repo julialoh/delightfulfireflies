@@ -8,6 +8,8 @@ class Target {
     PVector mytime = Consts.getCircleTime();
     startTime = (int) mytime.x;
     endTime = (int) mytime.y;
+    Consts.height = height;
+    Consts.width = width;
   }
   
   boolean contains(PVector v) {
