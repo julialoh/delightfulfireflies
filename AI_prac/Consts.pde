@@ -1,7 +1,7 @@
 static class Consts {
   public static int shape = 1;
   public static int time = 0;
-  public static int endTime = 360;
+  public static int endTime = 10;
   public static int totalTime = 0;
   public static int width = 0;
   public static int height = 0;

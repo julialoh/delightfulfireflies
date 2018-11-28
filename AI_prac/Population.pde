@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Population {
   Rocket[] population; 
   float mutationRate;
@@ -19,18 +21,36 @@ class Population {
   //    population[i].show();
   //  }
   //}
+  class mySort implements Comparator<Rocket> {
+    @Override
+    public int compare(Rocket a, Rocket b) {
+      return -Float.compare(a.fitness,b.fitness);
+    }
+  }
   
   void selection() {
     matingPool = new ArrayList<Rocket>(); 
     float fit = 0;
-    for (int i = 0; i < population.length; i ++) {
-      if (population[i].fitness > fit) {fit = population[i].fitness;}
-      float n = pow((float)(13+Math.log10(population[i].fitness/10000000)), 4);
-      for (int j = 0; j < n; j++) {
-          matingPool.add(population[i]);
+    
+    Arrays.sort(population, new mySort());
+    for (int i = 1; i <= population.length; i++) {
+      //print(population[i-1].fitness+ " ");
+      if (population[i-1].fitness > fit) {fit = population[i-1].fitness;}
+      for (int j = 0; j<((float)population.length*10)/pow(2,i);j++) {
+        matingPool.add(population[i]);
       }
-    }  
-    print(matingPool.size()+" ");
+    }
+    print(fit+"\n");
+    //print(matingPool.size()+" ");
+    //float fit = 0;
+    //for (int i = 0; i < population.length; i ++) {
+    //  if (population[i].fitness > fit) {fit = population[i].fitness;}
+    //  float n = pow((float)(13+Math.log10(population[i].fitness/1000)), 4);
+    //  for (int j = 0; j < n; j++) {
+    //      matingPool.add(population[i]);
+    //  }
+    //}  
+    //print(fit+" ");
   }
   
   void reproduction() {

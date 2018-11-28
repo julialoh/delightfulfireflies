@@ -8,18 +8,18 @@ void setup() {
   Consts.width = width;
   Consts.height = height;
   frameRate(360);
-  float mutationRate = 0.02;
+  float mutationRate = 0.002;
   population = new Population(mutationRate, 200);
   background(255);
 }
 
 void draw() {
   //print(Consts.drawShape(Consts.shape).x+ " ");
-  print("YAAAAA ");
-  for (int i = 0; i<20; i++) {
-    //if (population.generations % maxTimeInc == 0) {
-    //  Consts.endTime = min(Consts.endTime+1, Consts.totalTime);
-    //}
+  //print("YAAAAA ");
+  for (int i = 0; i<100; i++) {
+    if (population.generations % maxTimeInc == 0) {
+      Consts.endTime = min(Consts.endTime+1, Consts.totalTime);
+    }
     for (int j = 0; j < Consts.endTime; j++) {
       population.live();
     }
