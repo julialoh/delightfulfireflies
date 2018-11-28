@@ -17,6 +17,8 @@ void draw() {
   if (Consts.time < Consts.totalTime) {
     population.live();
     Consts.time++;
+    stroke(255,0,0);
+    point(Consts.drawShape(1).x,Consts.drawShape(1).y);
   } else {
     background(255);
     Consts.getTime(Consts.shape);
