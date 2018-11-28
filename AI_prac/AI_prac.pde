@@ -16,7 +16,7 @@ void setup() {
 void draw() {
   //print(Consts.drawShape(Consts.shape).x+ " ");
   print("YAAAAA ");
-  for (int i = 0; i<1000; i++) {
+  for (int i = 0; i<20; i++) {
     //if (population.generations % maxTimeInc == 0) {
     //  Consts.endTime = min(Consts.endTime+1, Consts.totalTime);
     //}
