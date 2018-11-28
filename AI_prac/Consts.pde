@@ -1,13 +1,14 @@
 static class Consts {
   public static int shape = 1;
   public static int time = 0;
+  public static int endTime = 360;
   public static int totalTime = 0;
   public static int width = 0;
   public static int height = 0;
   
   public static PVector getBatmanTime() {
     time = 0;
-    totalTime = 42;
+    totalTime = 420;
     return new PVector(-21, 21);
   }
   

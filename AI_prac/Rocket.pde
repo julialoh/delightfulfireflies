@@ -45,7 +45,7 @@ class Rocket {
   
   void calcFitness() {
     finDist = PVector.dist(location, Consts.drawShape(1)) + 0.0001;
-    nfitness = pow(1/(finDist), 2);
+    nfitness = pow(1/(finDist*.15), 2);
     fitness += nfitness;
   }
   

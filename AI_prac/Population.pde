@@ -23,10 +23,10 @@ class Population {
   void selection() {
     matingPool = new ArrayList<Rocket>(); 
     for (int i = 0; i < population.length; i ++) {
-       float n = pow((float)(13+Math.log10(population[i].fitness)), 4);
-    for (int j = 0; j < n; j++) {
-        matingPool.add(population[i]);
-    }
+      float n = pow((float)(13+Math.log10(population[i].fitness)), 4);
+      for (int j = 0; j < n; j++) {
+          matingPool.add(population[i]);
+      }
     }  
   }
   

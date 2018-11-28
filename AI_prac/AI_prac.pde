@@ -1,5 +1,6 @@
 Population population;
 ArrayList<Obstacle> obstacles;
+int maxTimeInc = 10;
 
 void setup() {
   size(640, 480);
@@ -7,29 +8,48 @@ void setup() {
   Consts.width = width;
   Consts.height = height;
   frameRate(360);
-  float mutationRate = 0.002;
+  float mutationRate = 0.02;
   population = new Population(mutationRate, 200);
   background(255);
 }
 
 void draw() {
   //print(Consts.drawShape(Consts.shape).x+ " ");
-  if (Consts.time < Consts.totalTime) {
-    population.live();
-    Consts.time++;
-    stroke(255,0,0);
-    point(Consts.drawShape(1).x,Consts.drawShape(1).y);
-  } else {
-    background(255);
+  print("YAAAAA ");
+  for (int i = 0; i<1000; i++) {
+    //if (population.generations % maxTimeInc == 0) {
+    //  Consts.endTime = min(Consts.endTime+1, Consts.totalTime);
+    //}
+    for (int j = 0; j < Consts.endTime; j++) {
+      population.live();
+    }
     Consts.getTime(Consts.shape);
     population.fitness();
     population.selection();
     population.reproduction();
   }
-  
-  population.render();
-  
-  fill(0);
+  background(255);
+  for (int j = 0; j < Consts.endTime+1; j++) {
+    
+    if (Consts.time < Consts.endTime) {
+      population.live();
+      Consts.time++;
+      stroke(255,0,0);
+      point(Consts.drawShape(1).x,Consts.drawShape(1).y);
+    } else {
+      Consts.getTime(Consts.shape);
+      population.fitness();
+      population.selection();
+      population.reproduction();
+      //if (population.generations % maxTimeInc == 0) {
+      //  Consts.endTime = min(Consts.endTime+1, Consts.totalTime);
+      //}
+    }
+    
+    population.render();
+    
+    fill(0);
+  }
   //text("Generation #: " + population.getGenerations(), 10, 18);
   //text("Cycles left: " + (Consts.totalTime-Consts.time), 10, 36);
 }
