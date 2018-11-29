@@ -6,6 +6,34 @@ static class Consts {
   public static int totalTime = 0;
   public static int width = 0;
   public static int height = 0;
+  
+  public static PVector getSupermanTime() {
+    time = 0; 
+    totalTime = 280; 
+    return new PVector(0, 28); 
+  }
+  
+  public static PVector drawSuperman() {
+    float t = (float)(time-140)/10; 
+    float tp = abs(t);     
+    float x = -12*tp + 16*(abs(t-1)) + 12*abs(t-2) - 12*abs(t-3) - 16*abs(t-4) + 19/2*abs(t-5) + 15/2*abs(t-6) + 15/2*abs(t-7) - 
+    2*abs(t-8) + 5/2*abs(t-9) + 17/2*abs(t-10) - 13/2*abs(t-11) + 5/2*abs(t-13) - abs(t-14) - 3/2*abs(t-15) - 3/2*abs(t-16) - 5/4*abs(t-17)
+    + 11/4 * abs(t-18) + 4*abs(t-22) - 4*abs(t-23) + 2*abs(t-24) - 1/2*abs(t-25) - 2*abs(t-26) + 1/2*abs(t-27)
+    + 5/4*pow((abs(t-15) - abs(t-16) - 1), 2) - 1/2*pow((abs(t-27) - abs(t-29) + 1), 2) + 19/2*cos(PI/4*((abs(t-11) - (t-13)))) + 14*cos(PI/4*((abs(t-18) - abs(t-19) + 1))) 
+    - 3/4*(abs(t-18) - abs(t-19)) - 17/2*cos(PI/4*((abs(t-19) - abs(t-21)))) + 9*sin(PI/4*((abs(t-21) - abs(t-22) + 1))) - 10*(abs(t-13)/(t-13)) + 20*(abs(t-17)/(t-17)) - 6*(abs(t-25)/(t-25)) - 9;
+    float y = 14*tp - 10*abs(t-1) - 4*abs(t-2) - 4*abs(t-3) - 10*abs(t-4) + 203/12*abs(t-5) - 35/12*abs(t-6) - 35/12*abs(t-7) + 35/12*abs(t-8) + 7/3*abs(t-9) - 7/3*abs(t-10) + 5/2*abs(t-13)
+    - 5/2*abs(t-14) - 17/4*abs(t-15) + 6*abs(t-16) - 119/24*abs(t-17) + 77/24*abs(t-18) + 5/2*abs(t-23) - 9/2*abs(t-24) + 2*abs(t-25) + abs(t-27) - abs(t-28)
+    + 1/2*pow((abs(t-6) - abs(t-7)), 2) - 21/8*pow((abs(t-8) - abs(t-9) - 1/9), 2) + 11/24*pow((abs(t-10) - abs(t-11) - 1), 2) + 1/4*pow((abs(t-26) - abs(t-27) - 2), 2)
+    - 2*sin(PI/4*(abs(t-11) - abs(t-13))) + 53/12*sin(PI/4*(abs(t-13) - abs(t-19) + 1)) + 7/2*sin(PI/4*(abs(t-19) - abs(t-21))) - 6*sin(PI/4*(abs(t-21) - abs(t-22) - 1))
+    + 7/3*(abs(t-5)/(t-5)) + 14/3*(abs(t-8)/(t-8)) + 7*(abs(t-13)/(t-13)) + 5/2*(abs(t-25)/(t-25)) - 1451/216;
+    //if (time<140){
+    //  return new PVector(x*scale+width/2,-y*scale+height/2);
+    //}
+    //else {
+    //  return new PVector(-x*scale+width/2,-y*scale+height/2);
+    //}
+    return new PVector(x*scale+width/2, -y*scale+height/2);
+  }
 
   public static PVector getFleurTime() {
     time = 0;
@@ -121,6 +149,8 @@ public static float getInsideTwo(float t, int a, int b) {
       public PVector drawShape() {return drawSquare(); } },
     new DrawAction() { public PVector getTime() {return getFleurTime(); } 
       public PVector drawShape() {return drawFleur(); } },
+    new DrawAction() { public PVector getTime() {return getSupermanTime(); }
+      public PVector drawShape() {return drawSuperman(); } }, 
   };
   
   public static PVector getTime(int index) {
