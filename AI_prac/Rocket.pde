@@ -43,14 +43,21 @@ class Rocket {
     popMatrix();
   }
   
-  void calcFitness() {
+  void intermediateFitness() {
     finDist = PVector.dist(location, Consts.drawShape(1)) + 0.0001;
-    nfitness = 1/(finDist);
-    fitness += nfitness;
+    //nfitness = pow(1/(finDist),2);
+    //fitness += nfitness;
     //fitness += nfitness/(Consts.time+1);
+    fitness += finDist;
   }
   
-    void render() {
+  void calcFitness() {
+    //print(fitness+" ");
+    fitness = 1/fitness;
+    print(fitness+"\n");
+  }
+  
+  void render() {
     //fill(200);
     //PVector dir;
     //PVector perp;
@@ -74,6 +81,6 @@ class Rocket {
     applyForce(dna.genes[genecount]);
     genecount++;
     update();
-    calcFitness();
+    intermediateFitness();
   }
 }

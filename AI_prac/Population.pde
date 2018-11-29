@@ -36,20 +36,20 @@ class Population {
     for (int i = 1; i <= population.length; i++) {
       //print(population[i-1].fitness+ " ");
       if (population[i-1].fitness > fit) {fit = population[i-1].fitness;}
-      for (int j = 0; j<((float)population.length*10)/pow(2,i);j++) {
+      for (int j = 0; j<((float)population.length*2)/pow(2,i);j++) {
         matingPool.add(population[i]);
       }
     }
-    print(fit+"\n");
-    //print(matingPool.size()+" ");
+    //print(fit+"\n");
     //float fit = 0;
     //for (int i = 0; i < population.length; i ++) {
     //  if (population[i].fitness > fit) {fit = population[i].fitness;}
-    //  float n = pow((float)(13+Math.log10(population[i].fitness/1000)), 4);
+    //  float n = pow((float)(13+Math.log10(population[i].fitness)), 4);
     //  for (int j = 0; j < n; j++) {
     //      matingPool.add(population[i]);
     //  }
     //}  
+    //print(matingPool.size()+" ");
     //print(fit+" ");
   }
   
