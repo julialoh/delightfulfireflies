@@ -38,17 +38,6 @@ class Firefly {
     totalFitness = 1/fitness;
   } 
   
-  void show() {
-    pushMatrix();
-    noStroke();
-    fill (255, 150);
-    translate(location.x, location.y);
-    rotate(velocity.heading());
-    rectMode(CENTER);
-    rect(0, 0, 25, 5);
-    popMatrix();
-  }
-  
   void render(){
     stroke(153); 
     float x = location.x;
