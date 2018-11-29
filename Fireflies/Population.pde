@@ -67,4 +67,14 @@ class Population {
     }
   }
   
+  public void renderBest() {
+    int highest = 0;
+    for (int i = 0; i < population.length; i++) {
+      if (population[i].fitness < population[highest].fitness) {
+        highest = i;
+      }
+    }
+      population[highest].render();
+  }
+  
 }

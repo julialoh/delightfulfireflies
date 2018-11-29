@@ -8,7 +8,7 @@ void setup() {
   Consts.width = width;
   Consts.height = height;
   frameRate(360);
-  population = new Population(0.0002, 200);
+  population = new Population(0.002, 200);
   background(255);
 }
 
@@ -29,7 +29,8 @@ void draw() {
     }
   }
   if (population.generation % genDraw == 0) {
-    population.render();
+    //population.render();
+    population.renderBest();
     stroke(255,0,0);
     point(Consts.drawShape(Consts.shape).x,Consts.drawShape(Consts.shape).y);
   }
