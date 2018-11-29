@@ -35,6 +35,8 @@ class DNA {
       if (random(1) < mRate){
         genes[i] = PVector.random2D();
         genes[i].mult(random(0, maxForce));
-  }  
+      }
+  }
+  }
   
 }
