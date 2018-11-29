@@ -17,7 +17,7 @@ class Firefly {
     fitness = 0;
   }
   void applyforce(PVector force) {
-    acceleration=force;
+    acceleration.add(force);
   }
   
   void update(){
@@ -46,7 +46,7 @@ class Firefly {
   }
   
   void run() {
-   //applyForce(dna.genes[Consts.time]);
+   applyforce(dna.genes[Consts.time]);
    update();
    pointsFitness();
   }

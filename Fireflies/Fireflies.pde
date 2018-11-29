@@ -1,6 +1,6 @@
 Population population;
 int maxTimeInc = 20;
-int genDraw = 2;
+int genDraw = 5;
 
 void setup() {
   size(800, 600);
@@ -8,7 +8,7 @@ void setup() {
   Consts.width = width;
   Consts.height = height;
   frameRate(360);
-  population = new Population(0.02, 100);
+  population = new Population(0.002, 200);
   background(255);
 }
 
@@ -17,14 +17,20 @@ void draw() {
     population.live();
     Consts.time++;
   } else {
+    if (population.generation % maxTimeInc == 0) {
+      Consts.endTime = min(Consts.endTime+1, Consts.totalTime);
+    }
     Consts.getTime(Consts.shape);
     population.fitness();
     population.selection();
     population.reproduction();
+    if (population.generation % genDraw == 0) {
+      background(255);
+    }
   }
   if (population.generation % genDraw == 0) {
     population.render();
-      stroke(255,0,0);
-      point(Consts.drawShape(Consts.shape).x,Consts.drawShape(Consts.shape).y);
+    stroke(255,0,0);
+    point(Consts.drawShape(Consts.shape).x,Consts.drawShape(Consts.shape).y);
   }
 }

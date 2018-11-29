@@ -19,7 +19,7 @@ class Population {
   class mySort implements Comparator<Firefly> {
     @Override
     public int compare(Firefly a, Firefly b) {
-      return -Float.compare(a.fitness,b.fitness);
+      return Float.compare(a.fitness,b.fitness);
     }
   }
   
@@ -31,8 +31,6 @@ class Population {
   }
   
   void selection() {
-    
-    
     matingPool = new ArrayList<Firefly>(); 
     float fit = 0;
     Arrays.sort(population, new mySort());
@@ -40,7 +38,7 @@ class Population {
       //print(population[i-1].fitness+ " ");
       if (population[i-1].fitness > fit) {fit = population[i-1].fitness;}
       for (int j = 0; j<((float)population.length*2)/pow(2,i);j++) {
-        matingPool.add(population[i]);
+        matingPool.add(population[i-1]);
       }
     }
   }
