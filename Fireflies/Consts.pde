@@ -13,8 +13,27 @@ static class Consts {
   }
   
   public static PVector drawBatman() {
-    return new PVector();
+    int t = (time-210)/10;
+    return new PVector();    
+  }
+  
+  public int funx(t){
+    int tp = abs(t);
+    (
+    0.25 * (4*tp - 2*abs(tp-1) - abs(tp-2) - abs(tp-4))
+    (23/8)*(abs(tp-8)-abs(tp-12))
+    -(29/10)*(abs(tp-16)-abs(tp-21))
+    (1/4)*pow((abs(tp-12)-abs(tp-16)-2),2)
+    +10*cos((PI/16)*(abs(tp-4)-abs(tp-8)-4))
+    -10
+    )
     
+    
+    -1*pow(((tp-abs(tp-1)+1)/2),2)
+    +0.25(6*abs(tp-1)-11*abs(tp-2)+5*abs(tp-4))
+    -2*(abs(tp-12)-abs(tp-16))
+    -(12/pow(5,5))*pow(((abs(tp-16)-abs(tp-21)+37)/(2))-16,5)
+    + 6*sin((PI/16)*(abs(tp-4)-abs(tp-8)-4)) + 10
   }
   
   public static PVector getCircleTime() {
