@@ -101,6 +101,8 @@ public static float getInsideTwo(float t, int a, int b) {
       public PVector drawShape() {return drawCircle(); } },
     new DrawAction() { public PVector getTime() {return getSquareTime(); } 
       public PVector drawShape() {return drawSquare(); } },
+    new DrawAction() { public PVector getTime() {return getFleurTime(); } 
+      public PVector drawShape() {return drawFleur(); } },
   };
   
   public static PVector getTime(int index) {
