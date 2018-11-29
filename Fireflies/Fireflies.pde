@@ -32,6 +32,6 @@ void draw() {
     //population.render();
     population.renderBest();
     stroke(255,0,0);
-    point(Consts.drawShape(Consts.shape).x,Consts.drawShape(Consts.shape).y);
+    //point(Consts.drawShape(Consts.shape).x,Consts.drawShape(Consts.shape).y);
   }
 }
