@@ -8,7 +8,7 @@ void setup() {
   Consts.width = width;
   Consts.height = height;
   frameRate(360);
-  population = new Population(0.002, 200);
+  population = new Population(0.0002, 200);
   background(255);
 }
 
@@ -18,7 +18,7 @@ void draw() {
     Consts.time++;
   } else {
     if (population.generation % maxTimeInc == 0) {
-      Consts.endTime = min(Consts.endTime+1, Consts.totalTime);
+      Consts.endTime = min(Consts.endTime+5, Consts.totalTime);
     }
     Consts.getTime(Consts.shape);
     population.fitness();
