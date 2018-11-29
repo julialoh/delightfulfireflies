@@ -3,7 +3,7 @@ class DNA {
   float xoff = random(1000);
   float yoff = random(1000);
   float foff = random(1000);
-  maxForce = 3;
+  int maxForce = 3;
   
   DNA(){
     genes = new PVector[Consts.totalTime];
@@ -31,7 +31,7 @@ class DNA {
   }
   
   void mutate(float mRate) {
-    fir (int i=0; i<genes.length;i++){
+    for (int i=0; i<genes.length;i++){
       if (random(1) < mRate){
         genes[i] = PVector.random2D();
         genes[i].mult(random(0, maxForce));
