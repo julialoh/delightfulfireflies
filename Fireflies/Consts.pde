@@ -1,8 +1,8 @@
 static class Consts {
-  public static int shape = 0;
+  public static int shape = 3;
   public static int time = 0;
   public static int scale = 5;
-  public static int endTime = 1;
+  public static int endTime = 320;
   public static int totalTime = 0;
   public static int width = 0;
   public static int height = 0;
@@ -25,13 +25,26 @@ public static float getInsideTwo(float t, int a, int b) {
   
   public static PVector drawFleur() {
     float t = (float)(time-160)/10;
+    float tp = abs(t);
+    float xa = (abs(t)/t) * ( (2*sin(PI * ((tp-abs(tp-3) + 1)/4))) + (3*abs(tp-3)-abs(tp-4)) 
+    + (5*cos(PI * ((abs(tp-4)-abs(tp-3))/4))) + (2.5*cos(PI * ((abs(tp-6)-abs(tp-8))/4)))-
+    (3*abs(tp-8)-abs(tp-9)) + (1.5 *cos(PI * ((abs(tp-9)-abs(tp-11))/4))) + (2*sin(PI * ((abs(tp-11)-abs(tp-13))/4))) -
+    (2*sqrt(2) * sin(PI * ((abs(tp-13)-abs(tp-15)-1)/4))) + (2*cos(PI * ((abs(tp-15)-abs(tp-16)+1)/4))));
     float x = (abs(t)/t) *((2*sin(getInsideOne(0, 3, 1, t)) + (3 * getInsideTwo(t,3,4)))
     + (5*cos(getInsideOne(4,6,0,t))) + (2.5*cos(getInsideOne(6,8,0,t))) - (3*getInsideTwo(t,8,9)))
     + (1.5*cos(getInsideOne(9,11,0,t))) + (2*sin(getInsideOne(11,13,0,t))) - (2*sqrt(2) * sin(getInsideOne(13,15,-1,t)))
     + (2*cos(getInsideOne(15,16,1,t)));
-    float y = (-3 * getInsideTwo(t,0,3)) - (5/4)*pow((getInsideTwo(t,3,4)-1),2) - (5*sin(getInsideOne(4,6,0,t)))
+    float ya = (-3*(tp-abs(tp-3))) - ((5/4)*pow((abs(tp-3)-abs(tp-4)-1),2)) - (5*sin(PI*((abs(tp-4)-abs(tp-6)/4)))) +
+    (2.5*sin(PI * ((abs(tp-6)-abs(tp-8))/4))) - (.25 *pow((abs(tp-8)-abs(tp-9)+1),3)) -(1.5*sin(PI * ((abs(tp-9)-abs(tp-11))/4))) 
+    -(2*cos(PI * ((abs(tp-11)-abs(tp-13))/4))) - (2*sqrt(2) * cos(PI * ((abs(tp-13)-abs(tp-13)-1)/4))) - (2.5 * (abs(tp-15)-abs(tp-16))) 
+    + 11/2;
+    
+    
+    
+    float y = (-3 * getInsideTwo(t,0,3)) - ((5/4)*pow((getInsideTwo(t,3,4)-1),2)) - 
+    (5*sin(getInsideOne(4,6,0,t)))
     + (2.5 * sin(getInsideOne(6,8,0,t))) - (.25*pow((getInsideTwo(t,8,9)+1),3)) - (1.5*sin(getInsideOne(9,11,0,t))) 
-    - (2*cos(getInsideOne(11,13,0,t))) - (2 * sqrt(2) * cos(getInsideOne(13,15,1,t)));
+    - (2*cos(getInsideOne(11,13,0,t))) - (2 * sqrt(2) * cos(getInsideOne(13,15,1,t)))+11/2;
     return new PVector(x*scale+width/2,-y*scale+height/2);
   }
   
