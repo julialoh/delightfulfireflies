@@ -1,11 +1,25 @@
 static class Consts {
-  public static int shape = 4;
+  public static int shape = 5;
   public static int time = 0;
   public static int scale = 5;
   public static int endTime = 320;
   public static int totalTime = 0;
   public static int width = 0;
   public static int height = 0;
+  
+   public static PVector getRapierTime() {
+    time = 0; 
+    totalTime = 200; 
+    return new PVector(0, 20); 
+  }
+  
+  public static PVector drawRapier() {
+    float t = (float)(time-100)/10;    
+    float x= t + (cos(16*t)/t);
+    float y= t + (sin(16*t)/t);
+    return new PVector(x*scale+width/2,-y*scale+height/2);
+  }
+  
   
   public static PVector getSupermanTime() {
     time = 0; 
@@ -143,6 +157,8 @@ public static float getInsideTwo(float t, int a, int b) {
       public PVector drawShape() {return drawFleur(); } },
     new DrawAction() { public PVector getTime() {return getSupermanTime(); }
       public PVector drawShape() {return drawSuperman(); } }, 
+    new DrawAction() { public PVector getTime() {return getRapierTime(); }
+      public PVector drawShape() {return drawRapier(); } }, 
   };
   
   public static PVector getTime(int index) {
