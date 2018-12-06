@@ -2,7 +2,7 @@ static class Consts {
   public static int shape = 0;
   public static int time = 0;
   public static int scale = 5;
-  public static int endTime = 50;
+  public static int endTime = 10;
   public static int totalTime = 0;
   public static int width = 0;
   public static int height = 0;
