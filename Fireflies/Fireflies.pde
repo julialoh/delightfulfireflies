@@ -18,7 +18,7 @@ void draw() {
   if (Consts.time < Consts.endTime) {
     population.live();
     Consts.time++;
-  } else {
+  } else { 
     if (population.generation % maxTimeInc == 0) {
       Consts.endTime = min(Consts.endTime+10, Consts.totalTime);
     }
@@ -34,7 +34,7 @@ void draw() {
     if (value == 0){
     population.renderBest();
     }
-    else {
+    else if (value == 1){
       population.render();
     }
     stroke(255,0,0);
@@ -42,8 +42,9 @@ void draw() {
   }
 }
 
-void pressedKey() {  
+void keyPressed() {  
+    print(value+"\n");
     if (keyPressed == true && lastKey == false) value = 1;
     else if (keyPressed == true && lastKey == true) value = 0; 
-    lastKey = keyPressed;
+  lastKey = keyPressed;
 }

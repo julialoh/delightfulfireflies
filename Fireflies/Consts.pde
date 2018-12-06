@@ -2,13 +2,13 @@ static class Consts {
   public static int shape = 0;
   public static int time = 0;
   public static int scale = 5;
-  public static int endTime = 320;
+  public static int endTime = 50;
   public static int totalTime = 0;
   public static int width = 0;
   public static int height = 0;
   
   public static int getColor(){
-    return 360 * (time/endTime);
+    return (int)(360 * ((float)20 * time/totalTime))%360;
   }
   
    public static PVector getRapierTime() {
@@ -89,7 +89,6 @@ public static float getInsideTwo(float t, int a, int b) {
   
   public static PVector getBatmanTime() {
     time = 0;
-    endTime = 10;
     totalTime = 420;
     return new PVector(-21, 21);
   }

@@ -43,7 +43,10 @@ class Firefly {
   } 
   
   void render(){
-    stroke(153); 
+    strokeWeight(4);
+    colorMode(HSB,360,100,100);
+    stroke(Consts.getColor(), 100, 100); 
+    colorMode(RGB,255,255,255);
     float x = location.x;
     float y = location.y; 
     point(x,y); 
