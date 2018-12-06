@@ -7,6 +7,7 @@ class Firefly {
   float fitness;
   float findist;
   float totalFitness;
+  float error;
   
   
   Firefly(){
@@ -15,6 +16,7 @@ class Firefly {
     acceleration = new PVector(0,0); 
     dna = new DNA();
     fitness = 0;
+    error = 0;
   }
   void applyforce(PVector force) {
     acceleration.add(force);
@@ -30,12 +32,14 @@ class Firefly {
     PVector shapeLoc = Consts.drawShape(Consts.shape);//the location you compare yourself to at any given moment in time Conts.time
     //location of the shape you want to compare yourself to   
     findist= PVector.dist(location, shapeLoc) + .001;
+    
     //a distance closest to 0 should be wanted 
     fitness += findist;
 }
 
   void calcFitness(){
     totalFitness = 1/fitness;
+    this.error = fitness;
   } 
   
   void render(){

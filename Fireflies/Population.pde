@@ -6,6 +6,7 @@ class Population {
   float mutationRate;
   Firefly[] population;
   ArrayList<Firefly> matingPool;
+  ArrayList<Float> errorlist = new ArrayList<Float>(); 
   
   Population(float mutRate, int size) {
     generation = 0;
@@ -27,6 +28,12 @@ class Population {
     for (int i = 0; i < population.length; i ++) {
       population[i].calcFitness();
     }
+    for (int i = 0; i < population.length; i ++) {
+      errorlist.add(population[i].error);
+    }
+    Collections.sort(errorlist);
+    print(errorlist.get(0) + "%");
+    print("\n");
     generation++;
   }
   
