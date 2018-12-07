@@ -14,7 +14,7 @@ void setup() {
   Consts.width = width;
   Consts.height = height;
   frameRate(360);
-  population = new Population(0.02, 200);
+  population = new Population(0.002, 200);
   best = new Firefly();
   background(255);
   mT = new MakeT();
@@ -40,11 +40,14 @@ void draw() {
       if (!isDone || population.generation < moreGens) { // add only if not finished
         mT.myFloatData.add(population.leastError);
       }
+      if (population.generation == moreGens && isDone) {
+        mT.writeToTable();
+        mT.sT();
+      }
     }
     if (Consts.endTime == Consts.totalTime && !isDone) { // batman finishes first time
       moreGens = population.generation * 2;
       isDone = true;
-      print("done");
     }
     population.selection();
     if (population.generation % genDraw == 0) {
