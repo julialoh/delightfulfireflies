@@ -4,6 +4,7 @@ int genDraw = 20;
 boolean value;
 boolean drawog = true;
 boolean released = true;
+boolean written = false;
 Firefly best;  
 MakeT mT;
 boolean isDone;
@@ -43,9 +44,10 @@ void draw() {
       if (!isDone || population.generation < moreGens) { // add only if not finished
         mT.myFloatData.add(population.leastError);
       }
-      if (population.generation >= moreGens && isDone) {
+      if (population.generation >= moreGens &&  && !written) {
         mT.writeToTable();
         mT.sT();
+        written = true;
         print("done");
       }
     }
