@@ -6,7 +6,7 @@ class Firefly {
   float distance;
   float fitness;
   float findist;
-  float totalFitness;
+  public float totalFitness;
   float error;
   
   

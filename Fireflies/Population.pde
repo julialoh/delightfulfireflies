@@ -24,7 +24,7 @@ class Population {
   class mySort implements Comparator<Firefly> {
     @Override
     public int compare(Firefly a, Firefly b) {
-      return Float.compare(a.fitness,b.fitness);
+      return -Float.compare(a.totalFitness,b.totalFitness);
     }
   }
   
@@ -37,7 +37,7 @@ class Population {
       errorlist.add(population[i].error);
     }
     Collections.sort(errorlist);
-    print("\n");
+    //print("\n");
     leastError = errorlist.get(0);
     //print(leastError + "%");
     //print("\n\n");
