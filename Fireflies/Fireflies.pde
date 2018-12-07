@@ -34,6 +34,8 @@ void draw() {
     Consts.getTime(Consts.shape);
     population.fitness();
     if (population.generation % maxTimeInc == 0) { // add to array list
+      print(population.generation + " ");
+      print(moreGens + "\n");
       // WRITE TO TABLE
       //mT = new MakeT(population.leastErrorList);
       //mT.setup();
@@ -47,8 +49,8 @@ void draw() {
         print("done");
       }
     }
-    if (Consts.endTime == Consts.totalTime && !isDone) { // batman finishes first time
-      moreGens = population.generation * 2;
+    if (Consts.endTime == Consts.totalTime-1 && !isDone) { // batman finishes first time
+      moreGens = population.generation / 4;
       isDone = true;
     }
     population.selection();
