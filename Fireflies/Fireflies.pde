@@ -3,7 +3,9 @@ int maxTimeInc = 20;
 int genDraw = 5;
 boolean value;
 boolean released = true;
-Firefly best;
+Firefly best;  
+MakeT mT;
+boolean isDone;
 
 void setup() {
   size(800, 600);
@@ -17,16 +19,33 @@ void setup() {
 }
 
 void draw() {
+  isDone = false;
   if (Consts.time < Consts.endTime) {
     population.live();
     Consts.time++;
     best.run();
   } else { 
     if (population.generation % maxTimeInc == 0) {
-      Consts.endTime = min(Consts.endTime+5, Consts.totalTime);
+      Consts.endTime = min(Consts.endTime+10, Consts.totalTime);
     }
     Consts.getTime(Consts.shape);
     population.fitness();
+    if (population.generation % maxTimeInc == 0 && !isDone) {
+      mT = new MakeT(population.leastErrorList);
+      mT.setup();
+      mT.sT();
+      if (Consts.endTime == Consts.totalTime) {isDone = true;}
+    }
+      if (Consts.endTime == Consts.totalTime && isDone) {
+        int moreGens = population.generation * 2;
+        while(moreGens >= 0) {
+          mT = new MakeT(population.leastErrorList);
+          mT.setup();
+          mT.sT();
+          moreGens = moreGens -1;
+        }
+        print("done");
+      }
     population.selection();
     if (population.generation % genDraw == 0) {
       background(255);
