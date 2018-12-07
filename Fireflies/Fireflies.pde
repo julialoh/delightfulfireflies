@@ -28,7 +28,7 @@ void draw() {
     best.run();
   } else { 
     if (population.generation % maxTimeInc == 0) {
-      Consts.endTime = min(Consts.endTime+10, Consts.totalTime);
+      Consts.endTime = min(Consts.endTime+10, Consts.totalTime-1);
     }
     Consts.getTime(Consts.shape);
     population.fitness();
