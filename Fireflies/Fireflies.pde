@@ -43,7 +43,7 @@ void draw() {
       if (!isDone || population.generation < moreGens) { // add only if not finished
         mT.myFloatData.add(population.leastError);
       }
-      if (population.generation == moreGens && isDone) {
+      if (population.generation >= moreGens && isDone) {
         mT.writeToTable();
         mT.sT();
         print("done");
