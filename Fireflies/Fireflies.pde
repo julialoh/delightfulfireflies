@@ -13,9 +13,10 @@ void setup() {
   Consts.width = width;
   Consts.height = height;
   frameRate(360);
-  population = new Population(0.002, 200);
+  population = new Population(0.02, 200);
   best = new Firefly();
   background(255);
+  mT = new MakeT();
 }
 
 void draw() {
@@ -30,20 +31,24 @@ void draw() {
     }
     Consts.getTime(Consts.shape);
     population.fitness();
-    if (population.generation % maxTimeInc == 0 && !isDone) {
-      mT = new MakeT(population.leastErrorList);
-      mT.setup();
-      mT.sT();
-      if (Consts.endTime == Consts.totalTime) {isDone = true;}
+    if (population.generation % maxTimeInc == 0) {
+      // WRITE TO TABLE
+      //mT = new MakeT(population.leastErrorList);
+      //mT.setup();
+      //mT.sT();
+      while () {
+        
+      }
     }
-      if (Consts.endTime == Consts.totalTime && isDone) {
+      if (Consts.endTime == Consts.totalTime && !isDone) {
         int moreGens = population.generation * 2;
         while(moreGens >= 0) {
-          mT = new MakeT(population.leastErrorList);
-          mT.setup();
-          mT.sT();
+          //mT = new MakeT(population.leastErrorList);
+          //mT.setup();
+          //mT.sT();
           moreGens = moreGens -1;
         }
+        isDone = true;
         print("done");
       }
     population.selection();
@@ -72,7 +77,7 @@ void draw() {
       population.render();
     }
     stroke(255,0,0);
-    //point(Consts.drawShape(Consts.shape).x,Consts.drawShape(Consts.shape).y);
+    point(Consts.drawShape(Consts.shape).x,Consts.drawShape(Consts.shape).y);
   }
 }
 
