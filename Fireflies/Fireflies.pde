@@ -5,6 +5,7 @@ boolean value;
 boolean released = true;
 Firefly best;  
 MakeT mT;
+boolean isDone;
 
 void setup() {
   size(800, 600);
@@ -18,6 +19,7 @@ void setup() {
 }
 
 void draw() {
+  isDone = false;
   if (Consts.time < Consts.endTime) {
     population.live();
     Consts.time++;
@@ -28,11 +30,22 @@ void draw() {
     }
     Consts.getTime(Consts.shape);
     population.fitness();
-    if (population.generation % maxTimeInc == 0) {
+    if (population.generation % maxTimeInc == 0 && !isDone) {
       mT = new MakeT(population.leastErrorList);
       mT.setup();
       mT.sT();
+      if (Consts.endTime == Consts.totalTime) {isDone = true;}
     }
+      if (Consts.endTime == Consts.totalTime && isDone) {
+        int moreGens = population.generation * 2;
+        while(moreGens >= 0) {
+          mT = new MakeT(population.leastErrorList);
+          mT.setup();
+          mT.sT();
+          moreGens = moreGens -1;
+        }
+        print("done");
+      }
     population.selection();
     if (population.generation % genDraw == 0) {
       background(255);
