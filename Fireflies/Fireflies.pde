@@ -3,7 +3,10 @@ int maxTimeInc = 20;
 int genDraw = 5;
 boolean value;
 boolean released = true;
-Firefly best;
+Firefly best;  
+MakeT mT;
+boolean isDone;
+int moreGens;
 
 void setup() {
   size(800, 600);
@@ -14,19 +17,38 @@ void setup() {
   population = new Population(0.2, 200);
   best = new Firefly();
   background(255);
+  mT = new MakeT();
 }
 
 void draw() {
+  isDone = false;
   if (Consts.time < Consts.endTime) {
     population.live();
     Consts.time++;
     best.run();
   } else { 
     if (population.generation % maxTimeInc == 0) {
-      Consts.endTime = min(Consts.endTime+5, Consts.totalTime);
+      Consts.endTime = min(Consts.endTime+10, Consts.totalTime);
     }
     Consts.getTime(Consts.shape);
     population.fitness();
+    if (population.generation % maxTimeInc == 0) { // add to array list
+      // WRITE TO TABLE
+      //mT = new MakeT(population.leastErrorList);
+      //mT.setup();
+      //mT.sT();
+      if (!isDone || population.generation < moreGens) { // add only if not finished
+        mT.myFloatData.add(population.leastError);
+      }
+      if (population.generation == moreGens && isDone) {
+        mT.writeToTable();
+        mT.sT();
+      }
+    }
+    if (Consts.endTime == Consts.totalTime && !isDone) { // batman finishes first time
+      moreGens = population.generation * 2;
+      isDone = true;
+    }
     population.selection();
     if (population.generation % genDraw == 0) {
       background(255);
