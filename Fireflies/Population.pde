@@ -6,8 +6,8 @@ class Population {
   float mutationRate;
   Firefly[] population;
   ArrayList<Firefly> matingPool;
-  ArrayList<Float> errorlist = new ArrayList<Float>(); 
-  ArrayList<Float> leastErrorList = new ArrayList<Float>(); 
+  ArrayList<Float> errorlist; 
+  float leastError; 
   //MakeT mT;
   
   Population(float mutRate, int size) {
@@ -17,6 +17,7 @@ class Population {
     for (int i = 0; i < size; i++) {
       population[i] = new Firefly();
     }
+    errorlist = new ArrayList<Float>();
     //mT = new MakeT(errorlist);
   }
   
@@ -28,6 +29,7 @@ class Population {
   }
   
   void fitness() {
+    errorlist = new ArrayList<Float>();
     for (int i = 0; i < population.length; i ++) {
       population[i].calcFitness();
     }
@@ -35,9 +37,10 @@ class Population {
       errorlist.add(population[i].error);
     }
     Collections.sort(errorlist);
-    leastErrorList.add(errorlist.get(0));
-    print(errorlist.get(0) + "%");
     print("\n");
+    leastError = errorlist.get(0);
+    //print(leastError + "%");
+    //print("\n\n");
     generation++;
   }
   
