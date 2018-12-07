@@ -11,7 +11,7 @@ void setup() {
   Consts.width = width;
   Consts.height = height;
   frameRate(360);
-  population = new Population(0.002, 200);
+  population = new Population(0.2, 200);
   best = new Firefly();
   background(255);
 }
@@ -52,7 +52,7 @@ void draw() {
     else {
       population.render();
     }
-    stroke(255,0,0);
+    stroke(0,0,0);
     point(Consts.drawShape(Consts.shape).x,Consts.drawShape(Consts.shape).y);
   }
 }
