@@ -19,10 +19,10 @@ void setup() {
   best = new Firefly();
   background(255);
   mT = new MakeT();
+  isDone = false;
 }
 
 void draw() {
-  isDone = false;
   if (Consts.time < Consts.endTime) {
     population.live();
     Consts.time++;
@@ -50,7 +50,7 @@ void draw() {
       }
     }
     if (Consts.endTime == Consts.totalTime-1 && !isDone) { // batman finishes first time
-      moreGens = population.generation / 4;
+      moreGens = population.generation +population.generation/ 4;
       isDone = true;
     }
     population.selection();
