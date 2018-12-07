@@ -7,6 +7,8 @@ class Population {
   Firefly[] population;
   ArrayList<Firefly> matingPool;
   ArrayList<Float> errorlist = new ArrayList<Float>(); 
+  ArrayList<Float> leastErrorList = new ArrayList<Float>(); 
+  MakeT mT;
   
   Population(float mutRate, int size) {
     generation = 0;
@@ -15,6 +17,7 @@ class Population {
     for (int i = 0; i < size; i++) {
       population[i] = new Firefly();
     }
+    mT = new MakeT(errorlist);
   }
   
   class mySort implements Comparator<Firefly> {
@@ -32,6 +35,7 @@ class Population {
       errorlist.add(population[i].error);
     }
     Collections.sort(errorlist);
+    leastErrorList.add(errorlist.get(0));
     print(errorlist.get(0) + "%");
     print("\n");
     generation++;
